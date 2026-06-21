@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             generateBtn.disabled = true;
 
             try {
-                // Using the updated Gemini 1.5 Flash endpoint for modern AQ keys
                 const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
                 
                 const prompt = `You are an elite executive resume writer. I am applying for the role of ${role} at ${company}. 
@@ -68,7 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                 });
 
-                if (!response.ok) throw new Error("API request failed. Check your Key.");
+                // ENHANCED ERROR DIAGNOSTICS
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    const googleError = errorData.error?.message || "Unknown Error";
+                    throw new Error(`Google says: ${googleError}`);
+                }
 
                 const data = await response.json();
                 const aiText = data.candidates[0].content.parts[0].text;
@@ -101,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 
-            // Using html2pdf CDN imported in app.html
             html2pdf().set(opt).from(element).save();
         });
     }
