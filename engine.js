@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             generateBtn.disabled = true;
 
             try {
-                // Using Gemini 1.0 Pro endpoint as requested
-                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+                // Using the updated Gemini 1.5 Flash endpoint for modern AQ keys
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
                 
                 const prompt = `You are an elite executive resume writer. I am applying for the role of ${role} at ${company}. 
                 Here are my raw, messy notes about my experience: "${notes}". 
