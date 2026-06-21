@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace | Architect</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="workspace-body">
+    <nav class="workspace-nav">
+        <div class="logo">Architect.</div>
+        <button id="export-pdf-btn" class="btn-primary">Export PDF</button>
+    </nav>
+
+    <div class="split-screen">
+        <div class="editor-panel">
+            <div class="input-group">
+                <label for="api-key">Gemini API Key</label>
+                <input type="password" id="api-key" placeholder="AIzaSy...">
+            </div>
+            
+            <hr class="divider">
+            
+            <div class="input-group row">
+                <div>
+                    <label for="user-name">Full Name</label>
+                    <input type="text" id="user-name" placeholder="John Doe">
+                </div>
+                <div>
+                    <label for="user-contact">Contact Info</label>
+                    <input type="text" id="user-contact" placeholder="Email | Phone | LinkedIn">
+                </div>
+            </div>
+
+            <div class="input-group row">
+                <div>
+                    <label for="job-title">Target Role</label>
+                    <input type="text" id="job-title" placeholder="Senior Software Engineer">
+                </div>
+                <div>
+                    <label for="job-company">Company</label>
+                    <input type="text" id="job-company" placeholder="Acme Corp">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="raw-notes">Raw Experience Notes</label>
+                <textarea id="raw-notes" rows="8" placeholder="Paste your messy notes here... e.g., 'I built a new login system that made things 20% faster and fixed 10 bugs.'"></textarea>
+            </div>
+
+            <button id="generate-btn" class="btn-secondary">Synthesize & Render</button>
+            <p id="status-msg" class="status"></p>
+        </div>
+
+        <div class="canvas-panel">
+            <div class="canvas-container">
+                <div id="resume-canvas" class="resume-canvas">
+                    <h1 id="preview-name">John Doe</h1>
+                    <p id="preview-contact">johndoe@email.com | linkedin.com/in/johndoe</p>
+                    
+                    <div class="resume-section">
+                        <h2>EXPERIENCE</h2>
+                        <div class="resume-job">
+                            <div class="job-header">
+                                <h3 id="preview-role">Target Role</h3>
+                                <h4 id="preview-company">Company Name</h4>
+                            </div>
+                            <ul id="preview-bullets">
+                                <li>Your elite, synthesized bullet points will appear here.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="engine.js"></script>
+</body>
+</html>
