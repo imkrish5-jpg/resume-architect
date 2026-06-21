@@ -123,6 +123,7 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
     overflow-y: auto; background-color: #050505;
 }
 
+/* Make inputs look good on mobile and desktop */
 .input-group { margin-bottom: 20px; }
 .row { display: flex; gap: 12px; }
 .row > div { flex: 1; }
@@ -164,3 +165,13 @@ footer { text-align: center; padding: 40px; color: var(--text-muted); font-size:
 
 #preview-bullets { font-size: 10pt; padding-left: 20px; line-height: 1.5; }
 #preview-bullets li { margin-bottom: 6px; }
+
+/* Quick Mobile Responsiveness for app.html */
+@media (max-width: 768px) {
+    .split-screen { flex-direction: column; overflow-y: auto; }
+    .editor-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+    .canvas-panel { padding: 20px; }
+    .resume-canvas { width: 100%; padding: 0.5in; min-height: auto; }
+    .row { flex-direction: column; gap: 0; }
+    .workspace-body { height: auto; overflow: visible; }
+}
